@@ -33,8 +33,9 @@ public class MyProdutoRecyclerViewAdapter extends RecyclerView.Adapter<MyProduto
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.codigoView.setText(mValues.get(position).id);
+        holder.nomeView.setText(mValues.get(position).content);
+        holder.valorView.setText("00,00");
     }
 
     @Override
@@ -44,20 +45,22 @@ public class MyProdutoRecyclerViewAdapter extends RecyclerView.Adapter<MyProduto
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView codigoView;
+        public final TextView nomeView;
+        public final TextView valorView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            codigoView = (TextView) view.findViewById(R.id.produto_codigo);
+            nomeView = (TextView) view.findViewById(R.id.produto_nome);
+            valorView = (TextView) view.findViewById(R.id.produto_valor);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + nomeView.getText() + "'";
         }
     }
 }

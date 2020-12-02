@@ -5,7 +5,7 @@
     android:id="@+id/cadastro_produto_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dummy.CadastroProduto" >
+    tools:context=".CadastroProdutoFragment" >
 
     <EditText
         android:id="@+id/editText_codigo"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Código"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,21 +30,21 @@
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Nome"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_codigo" />
 
     <EditText
-        android:id="@+id/editText_quantidade"
+        android:id="@+id/editText_valor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Quantidade"
-        android:inputType="textPersonName"
+        android:hint="Valor"
+        android:inputType="number|numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_nome" />
@@ -54,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="Button"
+        android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_quantidade" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_valor" />
 </androidx.constraintlayout.widget.ConstraintLayout>
