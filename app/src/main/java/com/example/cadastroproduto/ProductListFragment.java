@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cadastroproduto.persistence.AppDatabase;
-import com.example.cadastroproduto.persistence.Produto;
+import com.example.cadastroproduto.persistence.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * A fragment representing a list of Items.
  */
-public class ListProdutoFragment extends Fragment {
+public class ProductListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -34,17 +34,7 @@ public class ListProdutoFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ListProdutoFragment() {
-    }
-
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static ListProdutoFragment newInstance(int columnCount) {
-        ListProdutoFragment fragment = new ListProdutoFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
+    public ProductListFragment() {
     }
 
     @Override
@@ -60,7 +50,8 @@ public class ListProdutoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        getActivity().findViewById(R.id.fab).setVisibility(FloatingActionButton.VISIBLE);
+        View activityMainView = container.getRootView().getRootView();
+        activityMainView.findViewById(R.id.fab).setVisibility(FloatingActionButton.VISIBLE);
 
         // Set the recyclerView
         if (view instanceof RecyclerView) {
@@ -72,23 +63,15 @@ public class ListProdutoFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
         }
-        getProdutos();
+        getProducts();
         return view;
     }
 
-    private void getProdutos(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<Produto> produtos = db.produtoDao().getAll();
-                ProdutoRecyclerViewAdapter adapter = new ProdutoRecyclerViewAdapter(produtos);
-                recyclerView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        recyclerView.setAdapter(adapter);
-                    }
-                });
-            }
+    private void getProducts(){
+        new Thread(() -> {
+            List<Product> products = db.productDao().getAll();
+            ProdutoRecyclerViewAdapter adapter = new ProdutoRecyclerViewAdapter(products);
+            recyclerView.post(() -> recyclerView.setAdapter(adapter));
         }).start();
     }
 }

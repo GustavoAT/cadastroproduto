@@ -5,7 +5,7 @@
     android:id="@+id/cadastro_produto_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroProdutoFragment" >
+    tools:context=".RegisterProductFragment" >
 
     <EditText
         android:id="@+id/editText_codigo"
@@ -15,11 +15,12 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Código"
+        android:hint="@string/codigo_hint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_nome"
@@ -29,11 +30,12 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="@string/nome_hint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_codigo" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_codigo"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_valor"
@@ -43,18 +45,19 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Valor"
+        android:hint="@string/valor_hint"
         android:inputType="number|numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_nome"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/button_cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="Cadastrar"
+        android:text="@string/cadastrar_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_valor" />
