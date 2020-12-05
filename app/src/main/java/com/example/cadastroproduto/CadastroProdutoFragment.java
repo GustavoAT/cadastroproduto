@@ -3,6 +3,7 @@ package com.example.cadastroproduto;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 
 import com.example.cadastroproduto.persistence.AppDatabase;
 import com.example.cadastroproduto.persistence.Produto;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +54,7 @@ public class CadastroProdutoFragment extends Fragment {
         codigoEdit = view.findViewById(R.id.editText_codigo);
         nomeEdit = view.findViewById(R.id.editText_nome);
         valorEdit = view.findViewById(R.id.editText_valor);
+        getActivity().findViewById(R.id.fab).setVisibility(FloatingActionButton.INVISIBLE);
         Button btCadastrar = view.findViewById(R.id.button_cadastrar);
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,23 @@ public class CadastroProdutoFragment extends Fragment {
                 novoProduto.codigo = codigoEdit.getText().toString();
                 novoProduto.nome = nomeEdit.getText().toString();
                 novoProduto.valor = Double.parseDouble(valorEdit.getText().toString());
-                db.produtoDao().insertAll(novoProduto);
+                btCadastrar.setEnabled(false);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        CharSequence message = "Não salvo";
+                        try {
+                            db.produtoDao().insertAll(novoProduto);
+                            message = "Produto salvo";
+                        } catch (Exception e) {
+                            message = "Não foi possivel salvar";
+                        }
+                        Snackbar.make(view, message,Snackbar.LENGTH_SHORT).show();
+                        NavHostFragment.findNavController(CadastroProdutoFragment.this)
+                                .navigate(R.id.action_cadastroProduto_to_produtoFragment);
+                    }
+                }).start();
+                
             }
         });
 

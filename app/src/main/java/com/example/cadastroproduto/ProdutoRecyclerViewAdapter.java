@@ -8,18 +8,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.cadastroproduto.dummy.DummyContent.DummyItem;
+import com.example.cadastroproduto.persistence.Produto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyProdutoRecyclerViewAdapter extends RecyclerView.Adapter<MyProdutoRecyclerViewAdapter.ViewHolder> {
+public class ProdutoRecyclerViewAdapter extends RecyclerView.Adapter<ProdutoRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Produto> mValues;
 
-    public MyProdutoRecyclerViewAdapter(List<DummyItem> items) {
+    public ProdutoRecyclerViewAdapter(List<Produto> items) {
         mValues = items;
     }
 
@@ -33,9 +35,9 @@ public class MyProdutoRecyclerViewAdapter extends RecyclerView.Adapter<MyProduto
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.codigoView.setText(mValues.get(position).id);
-        holder.nomeView.setText(mValues.get(position).content);
-        holder.valorView.setText("00,00");
+        holder.codigoView.setText(mValues.get(position).codigo);
+        holder.nomeView.setText(mValues.get(position).nome);
+        holder.valorView.setText("R$ " + mValues.get(position).valor);
     }
 
     @Override
@@ -48,7 +50,7 @@ public class MyProdutoRecyclerViewAdapter extends RecyclerView.Adapter<MyProduto
         public final TextView codigoView;
         public final TextView nomeView;
         public final TextView valorView;
-        public DummyItem mItem;
+        public Produto mItem;
 
         public ViewHolder(View view) {
             super(view);

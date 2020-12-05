@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 .navigate(R.id.action_produtoFragment_to_cadastroProduto);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

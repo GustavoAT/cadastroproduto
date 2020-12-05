@@ -12,7 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.cadastroproduto.dummy.DummyContent;
+import com.example.cadastroproduto.persistence.AppDatabase;
+import com.example.cadastroproduto.persistence.Produto;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -23,6 +27,8 @@ public class ListProdutoFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private AppDatabase db;
+    private RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -44,7 +50,7 @@ public class ListProdutoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        db = AppDatabase.getInstance(getContext());
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -54,18 +60,35 @@ public class ListProdutoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        getActivity().findViewById(R.id.fab).setVisibility(FloatingActionButton.VISIBLE);
 
-        // Set the adapter
+        // Set the recyclerView
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyProdutoRecyclerViewAdapter(DummyContent.ITEMS));
         }
+        getProdutos();
         return view;
+    }
+
+    private void getProdutos(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<Produto> produtos = db.produtoDao().getAll();
+                ProdutoRecyclerViewAdapter adapter = new ProdutoRecyclerViewAdapter(produtos);
+                recyclerView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView.setAdapter(adapter);
+                    }
+                });
+            }
+        }).start();
     }
 }
