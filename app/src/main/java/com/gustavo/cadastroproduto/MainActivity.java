@@ -1,4 +1,4 @@
-package com.example.cadastroproduto;
+package com.gustavo.cadastroproduto;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void navToRegisterFragment(){
         Navigation.findNavController(findViewById(R.id.fragment_navHost))
-                .navigate(R.id.action_produtoFragment_to_cadastroProduto);
+                .navigate(R.id.action_productFragment_to_registerProduct);
     }
 
 

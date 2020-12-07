@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/produtoFragment">
+    app:startDestination="@id/productFragment">
 
     <fragment
-        android:id="@+id/produtoFragment"
-        android:name="com.example.cadastroproduto.ProductListFragment"
+        android:id="@+id/productFragment"
+        android:name="com.gustavo.cadastroproduto.ProductListFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" >
         <action
-            android:id="@+id/action_produtoFragment_to_cadastroProduto"
-            app:destination="@id/cadastroProduto" />
+            android:id="@+id/action_productFragment_to_registerProduct"
+            app:destination="@id/registerProduct" />
     </fragment>
     <fragment
-        android:id="@+id/cadastroProduto"
-        android:name="com.example.cadastroproduto.RegisterProductFragment"
-        android:label="fragment_cadastroproduto"
-        tools:layout="@layout/fragment_cadastroproduto" >
+        android:id="@+id/registerProduct"
+        android:name="com.gustavo.cadastroproduto.RegisterProductFragment"
+        android:label="fragment_registerproduct"
+        tools:layout="@layout/fragment_cadastroproduto">
         <action
-            android:id="@+id/action_cadastroProduto_to_produtoFragment"
-            app:destination="@id/produtoFragment" />
+            android:id="@+id/action_registerProduct_to_productFragment"
+            app:destination="@id/productFragment" />
     </fragment>
 </navigation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cadastroproduto">
+    package="com.gustavo.cadastroproduto">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cadastroproduto">
         <activity
-            android:name=".MainActivity"
+            android:name="com.gustavo.cadastroproduto.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Cadastroproduto.NoActionBar">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.example.cadastroproduto;
+package com.gustavo.cadastroproduto;
 
 import org.junit.Test;
 

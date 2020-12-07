@@ -1,4 +1,4 @@
-package com.example.cadastroproduto;
+package com.gustavo.cadastroproduto;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.cadastroproduto", appContext.getPackageName());
+        assertEquals("com.gustavo.cadastroproduto", appContext.getPackageName());
     }
 }

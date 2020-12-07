@@ -1,4 +1,4 @@
-package com.example.cadastroproduto;
+package com.gustavo.cadastroproduto;
 
 import android.os.Bundle;
 
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.cadastroproduto.persistence.AppDatabase;
-import com.example.cadastroproduto.persistence.Product;
+import com.gustavo.cadastroproduto.persistence.AppDatabase;
+import com.gustavo.cadastroproduto.persistence.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -65,8 +65,9 @@ public class RegisterProductFragment extends Fragment {
                     message = getText(R.string.data_not_saved);
                 }
                 Snackbar.make(view, message,Snackbar.LENGTH_SHORT).show();
+                //Prevent user to navigate back to this fragment
                 NavHostFragment.findNavController(RegisterProductFragment.this)
-                        .navigate(R.id.action_cadastroProduto_to_produtoFragment);
+                        .popBackStack();
             }).start();
 
         });

@@ -1,4 +1,4 @@
-package com.example.cadastroproduto;
+package com.gustavo.cadastroproduto;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.cadastroproduto.persistence.AppDatabase;
-import com.example.cadastroproduto.persistence.Product;
+import com.gustavo.cadastroproduto.persistence.AppDatabase;
+import com.gustavo.cadastroproduto.persistence.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.cadastroproduto.persistence;
+package com.gustavo.cadastroproduto.persistence;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
